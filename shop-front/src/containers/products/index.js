@@ -21,7 +21,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .get("http://35.78.76.41:5000/products")
       .then(function (res) {
         setData(res.data);
       })
