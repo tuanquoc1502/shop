@@ -10,7 +10,7 @@ const Detail = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/${id}`)
+      .get(`http://35.78.76.41:5000/products/${id}`)
       .then(function (res) {
         setName(res.data.name);
         setDescription(res.data.description);
@@ -22,7 +22,7 @@ const Detail = () => {
 
   const updateProduct = () => {
     axios
-      .patch(`http://localhost:5000/products/${id}`, { name, description })
+      .patch(`http://35.78.76.41:5000/products/${id}`, { name, description })
       .then((response) => {
         console.log("success");
       })

@@ -21,7 +21,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/products")
+      .get("http://35.78.76.41:5000/products")
       .then(function (res) {
         setData(res.data);
       })
@@ -32,7 +32,7 @@ const Products = () => {
 
   const postProduct = () => {
     axios
-      .post("http://localhost:5000/products", {
+      .post("http://35.78.76.41:5000/products", {
         name,
         description,
       })
@@ -48,7 +48,7 @@ const Products = () => {
     e.stopPropagation();
 
     axios
-      .delete(`http://localhost:5000/products/${id}`)
+      .delete(`http://35.78.76.41:5000/products/${id}`)
       .then(function (res) {
         console.log(res);
       })
@@ -59,6 +59,10 @@ const Products = () => {
 
   return (
     <div>
+      <img
+        src="https://images-product-q.s3.ap-northeast-1.amazonaws.com/tao-khung-anh-meo.png"
+        alt="/test"
+      />
       <WrapperForm>
         <div>
           Name <input onChange={(e) => setName(e.target.value)} />
