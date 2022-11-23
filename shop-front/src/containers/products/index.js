@@ -21,7 +21,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://35.78.76.41:5000/products")
+      .get("http://api.pre-develop.tech:5000/products")
       .then(function (res) {
         setData(res.data);
       })
@@ -32,7 +32,7 @@ const Products = () => {
 
   const postProduct = () => {
     axios
-      .post("http://35.78.76.41:5000/products", {
+      .post("http://api.pre-develop.tech:5000/products", {
         name,
         description,
       })
@@ -48,7 +48,7 @@ const Products = () => {
     e.stopPropagation();
 
     axios
-      .delete(`http://35.78.76.41:5000/products/${id}`)
+      .delete(`http://api.pre-develop.tech:5000/products/${id}`)
       .then(function (res) {
         console.log(res);
       })
