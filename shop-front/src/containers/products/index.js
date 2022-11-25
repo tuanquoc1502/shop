@@ -59,10 +59,7 @@ const Products = () => {
 
   return (
     <div>
-      <img
-        src="https://images-product-q.s3.ap-northeast-1.amazonaws.com/tao-khung-anh-meo.png"
-        alt="/test"
-      />
+      <h1>Production</h1>
       <WrapperForm>
         <div>
           Name <input onChange={(e) => setName(e.target.value)} />

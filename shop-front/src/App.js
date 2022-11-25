@@ -4,8 +4,6 @@ import { routes } from "./routes";
 function App() {
   return (
     <div className="App">
-      <div>***</div>
-
       <Routes>
         {routes.map((e, i) => (
           <Route key={i} {...e} />
