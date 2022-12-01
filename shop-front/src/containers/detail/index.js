@@ -22,7 +22,7 @@ const Detail = () => {
 
   const updateProduct = () => {
     axios
-      .patch(`http://api.pre-develop.tech:5000/products/${id}`, {
+      .patch(`https://api.pre-develop.tech/products/${id}`, {
         name,
         description,
       })

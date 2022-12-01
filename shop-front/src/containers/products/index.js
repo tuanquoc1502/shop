@@ -21,7 +21,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://api.pre-develop.tech:5000/products")
+      .get("https://api.pre-develop.tech/products")
       .then(function (res) {
         setData(res.data);
       })
@@ -32,7 +32,7 @@ const Products = () => {
 
   const postProduct = () => {
     axios
-      .post("http://api.pre-develop.tech:5000/products", {
+      .post("https://api.pre-develop.tech/products", {
         name,
         description,
       })
@@ -48,7 +48,7 @@ const Products = () => {
     e.stopPropagation();
 
     axios
-      .delete(`http://api.pre-develop.tech:5000/products/${id}`)
+      .delete(`https://api.pre-develop.tech/products/${id}`)
       .then(function (res) {
         console.log(res);
       })
