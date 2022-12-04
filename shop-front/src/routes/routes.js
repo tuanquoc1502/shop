@@ -1,16 +1,16 @@
-import App from '../App';
-import Product from '../containers/products'
-import Detail from '../containers/detail'
+import Product from "../containers/products";
+import Home from "../containers/home";
+import FormAdd from "../containers/formAdd";
 
 export const Routes = [
   {
-    path: '/',
-    element: <Product />,
+    path: "/",
+    element: <Home />,
     exact: true,
   },
   {
-    path: '/detail/:id',
-    element: <Detail />,
+    path: "/add",
+    element: <FormAdd />,
     exact: true,
   },
 ];
