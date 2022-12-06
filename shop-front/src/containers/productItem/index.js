@@ -33,6 +33,8 @@ const ProductItem = ({ item }) => {
       });
   };
 
+  console.log(item);
+
   return (
     <WrapperBox onClick={() => navigator("/edit/${id}")}>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
