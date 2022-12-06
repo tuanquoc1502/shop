@@ -1,4 +1,4 @@
-import { Button, Spinner, Stack } from "@chakra-ui/react";
+import { Button, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductItem from "../productItem";
@@ -30,7 +30,7 @@ const Home = () => {
             colorScheme="blue"
             variant="solid"
           >
-            Add
+            Create Product
           </Button>
           <Button colorScheme="blue" variant="outline">
             Setting

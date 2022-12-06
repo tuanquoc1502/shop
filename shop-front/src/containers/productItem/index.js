@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
-import { Badge, Box, Image, Toast } from "@chakra-ui/react";
+import React from "react";
+import { Badge, Box, Image } from "@chakra-ui/react";
 import { CloseIcon, StarIcon } from "@chakra-ui/icons";
 import { IconDeleteProduct, WrapperBox, WrapperImage } from "./styles";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const ProductItem = ({ item }) => {
+  const navigate = useNavigate();
+
   const property = {
     imageUrl: "https://bit.ly/2Z4KKcF",
     imageAlt: "Rear view of modern home with pool",
@@ -33,10 +36,8 @@ const ProductItem = ({ item }) => {
       });
   };
 
-  console.log(item);
-
   return (
-    <WrapperBox onClick={() => navigator("/edit/${id}")}>
+    <WrapperBox onClick={() => navigate(`/edit/${item._id}`)}>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
         <WrapperImage>
           <Image src={item.image} alt="" />
