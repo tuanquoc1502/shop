@@ -29,7 +29,7 @@ const FormAdd = () => {
     formData.append("image", file[0]);
 
     axios
-      .post("http://localhost:5000/products", formData)
+      .post("https://api.pre-develop.tech/products", formData)
       .then(function (res) {
         console.log(res);
         navigate("/");
