@@ -4,6 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
+import NotMath from "./containers/notMath";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           {routes.map((e, i) => (
             <Route key={i} {...e} />
           ))}
-          <Route path="*" element={<App />} />
+          <Route path="*" element={<NotMath />} />
         </Routes>
       </div>
     </ChakraProvider>
