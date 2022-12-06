@@ -33,8 +33,6 @@ const ProductItem = ({ item }) => {
       });
   };
 
-  console.log(item);
-
   return (
     <WrapperBox>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
