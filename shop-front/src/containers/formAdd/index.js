@@ -4,6 +4,7 @@ import {
   FormHelperText,
   FormLabel,
   Input,
+  Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -32,20 +33,31 @@ const FormAdd = () => {
     formData.append("price", value.price);
     formData.append("image", file[0]);
 
-    axios
-      .post("https://api.pre-develop.tech/products", formData)
-      .then(function (res) {
-        navigate("/");
-        toast.success("add successfully", { autoClose: 3000 });
-      })
-      .catch(function (error) {
-        console.log(error);
-        toast.error("add failure", { autoClose: 3000 });
-      });
-  };
-
-  const handleChange = (e) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
+    if (id) {
+      axios
+        .path(`https://api.pre-develop.tech/products/${id}`, formData)
+        .then(function (res) {
+          console.log(res);
+          navigate("/");
+          toast.success("add successfully", { autoClose: 3000 });
+        })
+        .catch(function (error) {
+          console.log(error);
+          toast.error("add failure", { autoClose: 3000 });
+        });
+    } else {
+      axios
+        .post("https://api.pre-develop.tech/products", formData)
+        .then(function (res) {
+          console.log(res);
+          navigate("/");
+          toast.success("add successfully", { autoClose: 3000 });
+        })
+        .catch(function (error) {
+          console.log(error);
+          toast.error("add failure", { autoClose: 3000 });
+        });
+    }
   };
 
   useEffect(() => {
@@ -54,12 +66,12 @@ const FormAdd = () => {
       axios
         .get(`https://api.pre-develop.tech/products/${id}`)
         .then(function (res) {
+          console.log("quoc", res);
           setLoading(false);
           setValue({
             name: res.data.name,
             description: res.data.description,
             price: res.data.price,
-            image: res.data.image,
           });
         })
         .catch(function (error) {
@@ -69,6 +81,10 @@ const FormAdd = () => {
       setLoading(false);
     }
   }, []);
+
+  const handleChange = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+  };
 
   if (loading) {
     return <Loading />;
@@ -80,8 +96,8 @@ const FormAdd = () => {
         <FormLabel>Name</FormLabel>
         <Input
           type="text"
-          value={value.name}
           name="name"
+          value={value.name}
           onChange={(e) => handleChange(e)}
         />
       </FormControl>
@@ -89,6 +105,7 @@ const FormAdd = () => {
         <FormLabel>Description</FormLabel>
         <Input
           type="text"
+          value={value.description}
           name="description"
           value={value.description}
           onChange={(e) => handleChange(e)}
@@ -99,8 +116,8 @@ const FormAdd = () => {
         <Input
           type="number"
           name="price"
-          onChange={(e) => handleChange(e)}
           value={value.price}
+          onChange={(e) => handleChange(e)}
         />
       </FormControl>
       <FormControl>
