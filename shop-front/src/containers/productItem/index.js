@@ -33,10 +33,12 @@ const ProductItem = ({ item }) => {
       });
   };
 
+  console.log(item);
+
   return (
     <WrapperBox>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Image src={property.imageUrl} alt={property.imageAlt} />
+        <Image src={item.image} alt="" />
 
         <Box p="6">
           <Box display="flex" alignItems="baseline">
@@ -62,11 +64,15 @@ const ProductItem = ({ item }) => {
             lineHeight="tight"
             noOfLines={1}
           >
+            {item.name}
+          </Box>
+
+          <Box mt="0" fontWeight="black" lineHeight="tight" noOfLines={1}>
             {item.description}
           </Box>
 
           <Box>
-            {property.formattedPrice}
+            {item.price}
             <Box as="span" color="gray.600" fontSize="sm">
               / wk
             </Box>
