@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Badge, Box, Image, Toast } from "@chakra-ui/react";
 import { CloseIcon, StarIcon } from "@chakra-ui/icons";
-import { IconDeleteProduct, WrapperBox } from "./styles";
+import { IconDeleteProduct, WrapperBox, WrapperImage } from "./styles";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,7 +24,7 @@ const ProductItem = ({ item }) => {
     axios
       .delete(`https://api.pre-develop.tech/products/${id}`)
       .then(function (res) {
-        console.log(res);
+        window.location.reload();
         toast.success("delete successfully", { autoClose: 3000 });
       })
       .catch(function (error) {
@@ -34,9 +34,11 @@ const ProductItem = ({ item }) => {
   };
 
   return (
-    <WrapperBox>
+    <WrapperBox onClick={() => navigator("/edit/${id}")}>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Image src={property.imageUrl} alt={property.imageAlt} />
+        <WrapperImage>
+          <Image src={item.image} alt="" />
+        </WrapperImage>
 
         <Box p="6">
           <Box display="flex" alignItems="baseline">
@@ -62,11 +64,15 @@ const ProductItem = ({ item }) => {
             lineHeight="tight"
             noOfLines={1}
           >
+            {item.name}
+          </Box>
+
+          <Box mt="0" fontWeight="black" lineHeight="tight" noOfLines={1}>
             {item.description}
           </Box>
 
           <Box>
-            {property.formattedPrice}
+            {item.price}$ {""}
             <Box as="span" color="gray.600" fontSize="sm">
               / wk
             </Box>
@@ -87,7 +93,7 @@ const ProductItem = ({ item }) => {
           </Box>
         </Box>
         <IconDeleteProduct onClick={(e) => deleteProduct(e, item._id)}>
-          <CloseIcon color="whiteAlpha.900" />
+          <CloseIcon color="black" />
         </IconDeleteProduct>
       </Box>
     </WrapperBox>

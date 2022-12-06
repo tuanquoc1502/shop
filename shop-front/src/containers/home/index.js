@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ProductItem from "../productItem";
 import { ButtonAdd, Wrapper, WrapperHome, WrapperProduct } from "./styles";
 import { useNavigate } from "react-router-dom";
+import Loading from "../loading";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -45,13 +46,7 @@ const Home = () => {
               </div>
             ))
           ) : (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
+            <Loading />
           )}
         </WrapperProduct>
       </WrapperHome>
