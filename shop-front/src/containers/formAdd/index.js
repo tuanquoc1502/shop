@@ -107,7 +107,6 @@ const FormAdd = () => {
           type="text"
           value={value.description}
           name="description"
-          value={value.description}
           onChange={(e) => handleChange(e)}
         />
       </FormControl>
