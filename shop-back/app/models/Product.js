@@ -7,6 +7,7 @@ const Products = new Schema(
     name: { type: String, require: true },
     description: { type: String, require: true, maxLength: 600 },
     price: { type: Number, require: true },
+    image: { type: String, require: false },
   },
   {
     timestamps: true,
