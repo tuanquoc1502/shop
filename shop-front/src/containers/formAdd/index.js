@@ -1,11 +1,4 @@
-import {
-  Button,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-  Spinner,
-} from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -107,7 +100,6 @@ const FormAdd = () => {
           type="text"
           value={value.description}
           name="description"
-          value={value.description}
           onChange={(e) => handleChange(e)}
         />
       </FormControl>

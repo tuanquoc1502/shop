@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const WrapperBox = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 
 export const WrapperImage = styled.div`
