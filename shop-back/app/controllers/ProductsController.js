@@ -17,21 +17,21 @@ const params = {
   ACL: "public-read",
 };
 
-s3.createBucket(params, function (err, data) {
-  if (err) {
-    // console.log(err);
-  } else {
-    console.log("Bucket Created Successfully", data.Location);
-  }
-});
+// s3.createBucket(params, function (err, data) {
+//   if (err) {
+//     // console.log(err);
+//   } else {
+//     console.log("Bucket Created Successfully", data.Location);
+//   }
+// });
 
-s3.listObjects({ Bucket: "myphoto-q" }, function (err, data) {
-  if (err) {
-    console.log("Error", err);
-  } else {
-    const href = "https://myphoto-q.s3.us-west-1.amazonaws.com/";
-  }
-});
+// s3.listObjects({ Bucket: "myphoto-q" }, function (err, data) {
+//   if (err) {
+//     console.log("Error", err);
+//   } else {
+//     const href = "https://myphoto-q.s3.us-west-1.amazonaws.com/";
+//   }
+// });
 
 const uploadFileAWS = (file) => {
   const fileContent = fs.readFileSync(file.tempFilePath);
@@ -123,8 +123,10 @@ class ProductController {
     };
 
     Product.updateOne({ _id: req.params.id }, data)
-      .then((product) => console.log("product", product))
-      .catch(next);
+      .then((product) => res.json(product))
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   // [DELETE] /product/:id/

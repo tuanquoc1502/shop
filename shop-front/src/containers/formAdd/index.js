@@ -30,7 +30,6 @@ const FormAdd = () => {
       axios
         .patch(`https://api.pre-develop.tech/products/${id}`, formData)
         .then(function (res) {
-          console.log(res);
           navigate("/");
           toast.success("add successfully", { autoClose: 3000 });
         })
@@ -42,7 +41,6 @@ const FormAdd = () => {
       axios
         .post("https://api.pre-develop.tech/products", formData)
         .then(function (res) {
-          console.log(res);
           navigate("/");
           toast.success("add successfully", { autoClose: 3000 });
         })
