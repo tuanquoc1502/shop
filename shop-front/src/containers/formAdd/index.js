@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loading from "../loading";
-import { Wrapper } from "./styles";
+import { CurrentImage, Wrapper } from "./styles";
 
 const FormAdd = () => {
   const [value, setValue] = useState({
@@ -17,7 +17,6 @@ const FormAdd = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { id } = useParams();
-
   const postProduct = () => {
     const formData = new FormData();
 
@@ -57,12 +56,12 @@ const FormAdd = () => {
       axios
         .get(`https://api.pre-develop.tech/products/${id}`)
         .then(function (res) {
-          console.log("quoc", res);
           setLoading(false);
           setValue({
             name: res.data.name,
             description: res.data.description,
             price: res.data.price,
+            image: res.data.image,
           });
         })
         .catch(function (error) {
@@ -76,6 +75,9 @@ const FormAdd = () => {
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
+
+  console.log(value);
+  console.log("file", file);
 
   if (loading) {
     return <Loading />;
@@ -112,6 +114,16 @@ const FormAdd = () => {
       </FormControl>
       <FormControl>
         <FormLabel>Image</FormLabel>
+
+        {value.image ? (
+          <CurrentImage>
+            <img src={value.image} alt="" />
+          </CurrentImage>
+        ) : (
+          ""
+        )}
+        {file && <img src={URL.createObjectURL(file[0])} alt="" />}
+
         <input
           type="file"
           name="image"
