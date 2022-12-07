@@ -1,11 +1,8 @@
-import axios from "axios";
-import { baseUrl } from "./utils/getbaseUrl";
+import axios from 'axios';
 
-const axiosConfig = axios.create();
+const axiosConnect = axios.create();
 
-axiosConfig.defaults.baseURL = baseUrl;
-
-axiosConfig.interceptors.request.use(function (config) {
+axiosConnect.interceptors.request.use(function (config) {
   // const token = getToken();
 
   // if (token) {
@@ -15,7 +12,7 @@ axiosConfig.interceptors.request.use(function (config) {
   return config;
 });
 
-axiosConfig.interceptors.response.use(
+axiosConnect.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -23,17 +20,17 @@ axiosConfig.interceptors.response.use(
     // const token = getToken();
     // if (token && error.response.status === 401) {
     //   clearStorage();
-    //   window.location.href = "/not_match";
+    //   window.location.href = '/not_match';
     //   return;
     // }
     // if (
     //   token &&
     //   (error.response.status === 404 || error.response.status === 403)
     // ) {
-    //   window.location.href = "/not_match";
+    //   window.location.href = '/not_match';
     // }
     return Promise.reject(error);
   }
 );
 
-export default axiosConfig;
+export default axiosConnect;
