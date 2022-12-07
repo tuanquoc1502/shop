@@ -76,7 +76,6 @@ const FormAdd = () => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
 
-  console.log(value);
   console.log("file", file);
 
   if (loading) {
@@ -115,14 +114,15 @@ const FormAdd = () => {
       <FormControl>
         <FormLabel>Image</FormLabel>
 
-        {value.image ? (
+        {file[0]?.name ? (
+          <CurrentImage>
+            <img src={URL.createObjectURL(file[0])} alt="" />
+          </CurrentImage>
+        ) : (
           <CurrentImage>
             <img src={value.image} alt="" />
           </CurrentImage>
-        ) : (
-          ""
         )}
-        {file && <img src={URL.createObjectURL(file[0])} alt="" />}
 
         <input
           type="file"
