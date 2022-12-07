@@ -28,7 +28,7 @@ const FormAdd = () => {
 
     if (id) {
       axios
-        .path(`https://api.pre-develop.tech/products/${id}`, formData)
+        .patch(`https://api.pre-develop.tech/products/${id}`, formData)
         .then(function (res) {
           console.log(res);
           navigate("/");
