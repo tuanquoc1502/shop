@@ -5,14 +5,12 @@ import NotMath from './app/components/notMath';
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        {routes.map((e, i) => (
-          <Route key={i} {...e} />
-        ))}
-        <Route path="*" element={<NotMath />} />
-      </Routes>
-    </div>
+    <Routes>
+      {routes.map((e, i) => (
+        <Route key={i} {...e} />
+      ))}
+      <Route path="*" element={<NotMath />} />
+    </Routes>
   );
 }
 

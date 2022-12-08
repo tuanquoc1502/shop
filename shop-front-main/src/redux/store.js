@@ -1,34 +1,12 @@
-import {
-  legacy_createStore as createStore,
-  applyMiddleware,
-  compose,
-} from 'redux';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+
 import reducers from './reducers';
-import rootSaga from './sagas';
-
-import { persistReducer } from 'redux-persist';
-import persistStore from 'redux-persist/es/persistStore';
-
-const persistConfig = {
-  key: 'root',
-  whitelist: ['auth'],
-};
-
-const persistedReducer = persistReducer(
-  persistConfig,
-  persistReducer(persistConfig, reducers)
-);
+import sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 
-const enhancers = [applyMiddleware(...middlewares)];
+sagaMiddleware.run(sagas);
 
-const store = createStore(persistedReducer, compose(...enhancers));
-
-const persistor = persistStore(store);
-
-sagaMiddleware.run(rootSaga);
-
-export { store, persistor };
+export { store };

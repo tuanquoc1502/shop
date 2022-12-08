@@ -19,7 +19,7 @@ root.render(
       <BrowserRouter>
         <App />
         <ToastContainer
-          position="bottom-left"
+          position="top-right"
           hideProgressBar
           closeOnClick
           rtl={false}

@@ -1,18 +1,56 @@
 import * as TYPES from './constants';
 
 const initState = {
+  dataProduct: [],
+  loading: false,
   error: null,
-  isLogin: false,
 };
 
-export default function authReducer(state = initState, action) {
+export default function mainProductReducer(state = initState, action) {
   switch (action.type) {
-    case TYPES.LOGIN: {
+    case TYPES.GET_MAIN_PRODUCT: {
       return {
         ...state,
-        isloging: true,
+        loading: true,
       };
     }
+
+    case TYPES.GET_MAIN_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        dataProduct: action.payload,
+        loading: false,
+      };
+    }
+
+    case TYPES.GET_MAIN_PRODUCT_FAILED: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+
+    case TYPES.POST_MAIN_PRODUCT: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case TYPES.POST_MAIN_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+
+    case TYPES.POST_MAIN_PRODUCT_FAILED: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+
     default:
       return state;
   }
