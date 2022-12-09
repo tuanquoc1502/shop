@@ -10,10 +10,13 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import {
+  AmountProduct,
+  BackHome,
   Image,
   LinkCreateProduct,
   WrapperAdmin,
   WrapperBox,
+  WrapperHeader,
   WrapperIconDelete,
   WrapperIconEdit,
   WrapperImage,
@@ -48,9 +51,17 @@ const Admin = () => {
   return (
     <WrapperAdmin>
       <Container maxW="container.xl">
-        <Link to="/admin/tuanquoc/create">
-          <LinkCreateProduct>Tạo sản phẩm</LinkCreateProduct>
-        </Link>
+        <WrapperHeader>
+          <Link to="/">
+            <BackHome>Trang chủ</BackHome>
+          </Link>
+
+          <Link to="/admin/tuanquoc/create">
+            <LinkCreateProduct>Tạo sản phẩm</LinkCreateProduct>
+          </Link>
+        </WrapperHeader>
+
+        <AmountProduct>Tổng số sản phẩm: {dataProduct.length}</AmountProduct>
 
         <WrapperBox>
           <TableContainer>
@@ -77,7 +88,9 @@ const Admin = () => {
                     <Td>
                       <WrapperIconEdit>
                         <EditIcon
-                          onClick={() => navigate('/admin/tuanquoc/create')}
+                          onClick={() =>
+                            navigate(`/admin/tuanquoc/edit/${item._id}`)
+                          }
                         />
                       </WrapperIconEdit>
                     </Td>

@@ -14,6 +14,23 @@ export const getMainProductFailed = (error) => ({
   payload: error,
 });
 
+// Get detail product
+
+export const getMainProductDetail = (id) => ({
+  type: TYPES.GET_MAIN_PRODUCT_DETAIL,
+  payload: id,
+});
+
+export const getMainProductDetailSuccess = (data) => ({
+  type: TYPES.GET_MAIN_PRODUCT_DETAIL_SUCCESS,
+  payload: data,
+});
+
+export const getMainProductDetailFailed = (error) => ({
+  type: TYPES.GET_MAIN_PRODUCT_DETAIL_FAILED,
+  payload: error,
+});
+
 // Post product
 
 export const postMainProduct = (data, callback) => ({
@@ -50,9 +67,9 @@ export const deleteMainProductFailed = (error) => ({
 
 // edit product
 
-export const editMainProduct = (data) => ({
+export const editMainProduct = (data, id, callback) => ({
   type: TYPES.EDIT_MAIN_PRODUCT,
-  payload: data,
+  payload: { data, id, callback },
 });
 
 export const editMainProductSuccess = (data) => ({

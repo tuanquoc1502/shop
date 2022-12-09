@@ -5,26 +5,36 @@ import {
   FormLabel,
   Input,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { WrapperForm } from './styles';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { postMainProduct } from '../../redux/mainProduct/action';
+import React, { useEffect, useState } from 'react';
+import { BoxImageUpload, WrapperForm } from './styles';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  editMainProduct,
+  getMainProductDetail,
+  postMainProduct,
+} from '../../redux/mainProduct/action';
+import Loading from '../components/loading';
 
 const CreateProduct = () => {
+  const { dataProductDetail, loading } = useSelector(
+    (state) => state.mainProduct
+  );
+
   const [value, setValue] = useState({
-    name: '',
-    description: '',
-    price: '',
-    image: '',
+    name: dataProductDetail?.name ?? '',
+    description: dataProductDetail?.description ?? '',
+    price: dataProductDetail?.price ?? '',
+    image: dataProductDetail?.image ?? '',
   });
   const [file, setFile] = useState('');
+  const { id } = useParams();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const redirect = () => {
-    navigate('/');
+    navigate('/admin/tuanquoc');
   };
 
   const postProduct = () => {
@@ -34,13 +44,26 @@ const CreateProduct = () => {
     formData.append('description', value.description);
     formData.append('price', value.price);
     formData.append('image', file[0]);
-
-    dispatch(postMainProduct(formData, redirect));
+    if (id) {
+      dispatch(editMainProduct(formData, id, redirect));
+    } else {
+      dispatch(postMainProduct(formData, redirect));
+    }
   };
 
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    if (id) {
+      dispatch(getMainProductDetail(id));
+    }
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Container maxW="container.xl">
@@ -73,7 +96,11 @@ const CreateProduct = () => {
           />
         </FormControl>
         <FormControl>
-          {file[0] && <img src={URL.createObjectURL(file[0])} alt="thumb" />}
+          {file[0] && (
+            <BoxImageUpload>
+              <img src={URL.createObjectURL(file[0])} alt="/" />
+            </BoxImageUpload>
+          )}
 
           <FormLabel>Image</FormLabel>
 
@@ -88,7 +115,7 @@ const CreateProduct = () => {
           variant="solid"
           onClick={() => postProduct()}
         >
-          Create Product
+          {id ? 'Edit Product' : 'Create Product'}
         </Button>
       </WrapperForm>
     </Container>

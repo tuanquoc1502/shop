@@ -2,6 +2,7 @@ import * as TYPES from './constants';
 
 const initState = {
   dataProduct: [],
+  dataProductDetail: [],
   loading: false,
   error: null,
 };
@@ -30,6 +31,28 @@ export default function mainProductReducer(state = initState, action) {
       };
     }
 
+    case TYPES.GET_MAIN_PRODUCT_DETAIL: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case TYPES.GET_MAIN_PRODUCT_DETAIL_SUCCESS: {
+      return {
+        ...state,
+        dataProductDetail: action.payload,
+        loading: false,
+      };
+    }
+
+    case TYPES.GET_MAIN_PRODUCT_DETAIL_FAILED: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+
     case TYPES.POST_MAIN_PRODUCT: {
       return {
         ...state,
@@ -48,6 +71,7 @@ export default function mainProductReducer(state = initState, action) {
       return {
         ...state,
         error: action.payload,
+        loading: false,
       };
     }
 

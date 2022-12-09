@@ -36,11 +36,32 @@ export const ListMenu = styled.ul`
   display: flex;
   align-items: center;
   gap: 40px;
-  margin-right: 150px;
+
+  @media only screen and (max-width: 785px) {
+    gap: 15px;
+  }
+
+  @media only screen and (max-width: 560px) {
+    display: none;
+  }
 `;
 
 export const ItemMenu = styled.li`
   list-style: none;
   cursor: pointer;
   font-weight: 500;
+`;
+
+export const TabMobile = styled.div`
+  display: none;
+
+  svg {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  @media only screen and (max-width: 560px) {
+    display: block;
+  }
 `;

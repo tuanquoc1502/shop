@@ -23,4 +23,9 @@ export const Routes = [
     element: <CreateProduct />,
     exact: true,
   },
+  {
+    path: '/admin/tuanquoc/edit/:id',
+    element: <CreateProduct />,
+    exact: true,
+  },
 ];

@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif; */
   }
   
   body {
@@ -14,4 +13,52 @@
 
   .chakra-container {
     max-width: 1350px !important;
+  }
+
+  @media only screen and (max-width: 1500px) {
+    .chakra-container {
+      max-width: 1202px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1400px) {
+    .chakra-container {
+      max-width: 980px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1050px) {
+    .chakra-container {
+      max-width: 800px !important;
+    }
+  }
+
+  @media only screen and (max-width: 945px) {
+    .chakra-container {
+      max-width: 750px !important;
+    }
+  }
+
+  @media only screen and (max-width: 875px) {
+    .chakra-container {
+      max-width: 650px !important;
+    }
+  }
+
+  @media only screen and (max-width: 785px) {
+    .chakra-container {
+      max-width: 550px !important;
+    }
+  }
+
+  @media only screen and (max-width: 640px) {
+    .chakra-container {
+      max-width: 480px !important;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .chakra-container {
+      max-width: 370px !important;
+    }
   }

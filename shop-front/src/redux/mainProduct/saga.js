@@ -14,6 +14,16 @@ function* getMainProductSaga() {
   }
 }
 
+function* getMainProductDetailSaga(props) {
+  try {
+    const data = yield call(API.getMainProductDetailApi, props.payload);
+    yield put(ACTIONS.getMainProductDetailSuccess(data.data));
+  } catch (error) {
+    yield put(ACTIONS.getMainProductDetailFailed(error));
+    console.log(error);
+  }
+}
+
 function* postMainProductSaga(props) {
   try {
     const data = yield call(API.postMainProductApi, props.payload.data);
@@ -48,9 +58,9 @@ function* deleteMainProductSaga(props) {
 
 function* editMainProductSaga(props) {
   try {
-    const data = yield call(API.editMainProductApi, props.payload.data);
+    const data = yield call(API.editMainProductApi, props.payload);
     yield put(ACTIONS.editMainProductSuccess(data.data));
-
+    console.log(data);
     if (data.status === 200) {
       props.payload.callback();
     }
@@ -64,6 +74,9 @@ function* editMainProductSaga(props) {
 
 export default function* rootSaga() {
   yield all([takeEvery(TYPES.GET_MAIN_PRODUCT, getMainProductSaga)]);
+  yield all([
+    takeEvery(TYPES.GET_MAIN_PRODUCT_DETAIL, getMainProductDetailSaga),
+  ]);
   yield all([takeEvery(TYPES.POST_MAIN_PRODUCT, postMainProductSaga)]);
   yield all([takeEvery(TYPES.DELETE_MAIN_PRODUCT, deleteMainProductSaga)]);
   yield all([takeEvery(TYPES.EDIT_MAIN_PRODUCT, editMainProductSaga)]);

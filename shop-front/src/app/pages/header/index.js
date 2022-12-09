@@ -7,11 +7,13 @@ import {
   ItemMenu,
   ListMenu,
   Name,
+  TabMobile,
   WrapperColHeader,
   WrapperHeader,
   WrapperLogo,
 } from './styles';
 import Logo from '../../../assets/images/logo.png';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 const LIST_MENU = ['Home', 'Category', 'Promo', 'About'];
 
@@ -33,6 +35,10 @@ const Header = () => {
                 <ItemMenu key={i}>{item}</ItemMenu>
               ))}
             </ListMenu>
+
+            <TabMobile>
+              <HamburgerIcon boxSize={6} />
+            </TabMobile>
           </HeaderColRight>
         </WrapperColHeader>
       </Container>

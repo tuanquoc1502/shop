@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
-import backgroundHeader from '../../../assets/images/backgroundHeader.webp';
 
-export const WrapperLayout = styled.div`
-  height: 1500px;
-`;
+export const WrapperLayout = styled.div``;
 
 export const BackgroundMain = styled.div`
   width: 100%;
@@ -12,6 +9,16 @@ export const BackgroundMain = styled.div`
 
   background-size: auto;
   background-repeat: no-repeat;
+
+  @media only screen and (max-width: 760px) {
+    height: 300px;
+  }
+
+  @media only screen and (max-width: 360px) {
+    height: 250px;
+  }
 `;
 
-export const Body = styled.div``;
+export const Body = styled.div`
+  margin-bottom: 20px;
+`;

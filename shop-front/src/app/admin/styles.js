@@ -37,7 +37,23 @@ export const WrapperForm = styled.div`
   }
 `;
 
-export const LinkCreateProduct = styled.span`
+export const WrapperHeader = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const LinkCreateProduct = styled.div`
+  background: #3182ce;
+  color: white;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+`;
+
+export const BackHome = styled.div`
   background: #3182ce;
   color: white;
   width: 150px;
@@ -88,6 +104,17 @@ export const Image = styled.img`
 `;
 
 export const Description = styled.div``;
+
+export const BoxImageUpload = styled.div`
+  width: 250px;
+  margin-top: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;
 
 export const PriceProduct = styled.div``;
 
