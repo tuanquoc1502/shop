@@ -7,3 +7,11 @@ export const getMainProductApi = () => {
 export const postMainProductApi = (data) => {
   return axiosConnect.post('/products', data);
 };
+
+export const deleteMainProductApi = (data) => {
+  return axiosConnect.delete(`/products/${data}`);
+};
+
+export const editMainProductApi = (data) => {
+  return axiosConnect.patch(`/products/${data.id}`, data);
+};

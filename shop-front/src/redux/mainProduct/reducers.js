@@ -51,6 +51,28 @@ export default function mainProductReducer(state = initState, action) {
       };
     }
 
+    case TYPES.DELETE_MAIN_PRODUCT: {
+      return {
+        ...state,
+      };
+    }
+
+    case TYPES.DELETE_MAIN_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        dataProduct: state.dataProduct.filter(
+          (item) => item._id !== action.payload
+        ),
+      };
+    }
+
+    case TYPES.DELETE_MAIN_PRODUCT_FAILED: {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    }
+
     default:
       return state;
   }

@@ -1,94 +1,101 @@
+import React, { useEffect } from 'react';
 import {
-  Button,
   Container,
-  FormControl,
-  FormLabel,
-  Input,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { WrapperAdmin } from './styles';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { postMainProduct } from '../../redux/mainProduct/action';
+import {
+  Image,
+  LinkCreateProduct,
+  WrapperAdmin,
+  WrapperBox,
+  WrapperIconDelete,
+  WrapperIconEdit,
+  WrapperImage,
+} from './styles';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  deleteMainProduct,
+  getMainProduct,
+} from '../../redux/mainProduct/action';
+import Loading from '../components/loading';
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 
 const Admin = () => {
-  const [value, setValue] = useState({
-    name: '',
-    description: '',
-    price: '',
-    image: '',
-  });
-  const [file, setFile] = useState('');
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const redirect = () => {
-    navigate('/');
+  const { dataProduct, loading } = useSelector((state) => state.mainProduct);
+
+  useEffect(() => {
+    dispatch(getMainProduct());
+  }, []);
+
+  const handleDeleteProduct = (id) => {
+    dispatch(deleteMainProduct(id));
   };
 
-  const postProduct = () => {
-    const formData = new FormData();
-
-    formData.append('name', value.name);
-    formData.append('description', value.description);
-    formData.append('price', value.price);
-    formData.append('image', file[0]);
-
-    dispatch(postMainProduct(formData, redirect));
-  };
-
-  const handleChange = (e) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
-  };
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
-    <Container maxW="container.xl">
-      <WrapperAdmin>
-        <FormControl>
-          <FormLabel>Name</FormLabel>
-          <Input
-            type="text"
-            name="name"
-            value={value.name}
-            onChange={(e) => handleChange(e)}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Description</FormLabel>
-          <Input
-            type="text"
-            value={value.description}
-            name="description"
-            onChange={(e) => handleChange(e)}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Price</FormLabel>
-          <Input
-            type="number"
-            name="price"
-            value={value.price}
-            onChange={(e) => handleChange(e)}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Image</FormLabel>
-          <input
-            type="file"
-            name="image"
-            onChange={(e) => setFile(e.target.files)}
-          />
-        </FormControl>
-        <Button
-          colorScheme="blue"
-          variant="solid"
-          onClick={() => postProduct()}
-        >
-          Create Product
-        </Button>
-      </WrapperAdmin>
-    </Container>
+    <WrapperAdmin>
+      <Container maxW="container.xl">
+        <Link to="/admin/tuanquoc/create">
+          <LinkCreateProduct>Tạo sản phẩm</LinkCreateProduct>
+        </Link>
+
+        <WrapperBox>
+          <TableContainer>
+            <Table variant="simple">
+              <Thead>
+                <Tr>
+                  <Th>Images</Th>
+                  <Th>Price ($)</Th>
+                  <Th>Description</Th>
+                  <Th>Edit</Th>
+                  <Th>Delete</Th>
+                </Tr>
+              </Thead>
+              {dataProduct.map((item) => (
+                <Tbody key={item._id}>
+                  <Tr>
+                    <Td>
+                      <WrapperImage>
+                        <Image src={`${item.image}`} />
+                      </WrapperImage>
+                    </Td>
+                    <Td>{item.price}</Td>
+                    <Td>{item.description}</Td>
+                    <Td>
+                      <WrapperIconEdit>
+                        <EditIcon
+                          onClick={() => navigate('/admin/tuanquoc/create')}
+                        />
+                      </WrapperIconEdit>
+                    </Td>
+                    <Td>
+                      <WrapperIconDelete
+                        onClick={() => handleDeleteProduct(item._id)}
+                      >
+                        <DeleteIcon color="red.400" />
+                      </WrapperIconDelete>
+                    </Td>
+                  </Tr>
+                </Tbody>
+              ))}
+            </Table>
+          </TableContainer>
+        </WrapperBox>
+      </Container>
+    </WrapperAdmin>
   );
 };
 

@@ -30,3 +30,37 @@ export const postMainProductFailed = (error) => ({
   type: TYPES.POST_MAIN_PRODUCT_FAILED,
   payload: error,
 });
+
+// delete product
+
+export const deleteMainProduct = (data) => ({
+  type: TYPES.DELETE_MAIN_PRODUCT,
+  payload: data,
+});
+
+export const deleteMainProductSuccess = (data) => ({
+  type: TYPES.DELETE_MAIN_PRODUCT_SUCCESS,
+  payload: data,
+});
+
+export const deleteMainProductFailed = (error) => ({
+  type: TYPES.DELETE_MAIN_PRODUCT_FAILED,
+  payload: error,
+});
+
+// edit product
+
+export const editMainProduct = (data) => ({
+  type: TYPES.EDIT_MAIN_PRODUCT,
+  payload: data,
+});
+
+export const editMainProductSuccess = (data) => ({
+  type: TYPES.EDIT_MAIN_PRODUCT_SUCCESS,
+  payload: data,
+});
+
+export const editMainProductFailed = (error) => ({
+  type: TYPES.EDIT_MAIN_PRODUCT_FAILED,
+  payload: error,
+});
