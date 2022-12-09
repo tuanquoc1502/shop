@@ -8,7 +8,8 @@ export const WrapperLayout = styled.div`
 export const BackgroundMain = styled.div`
   width: 100%;
   height: 690px;
-  background: url(${backgroundHeader});
+  background-image: url('https://myphoto-q2.s3.ap-northeast-1.amazonaws.com/backgroundHeader.webp');
+
   background-size: auto;
   background-repeat: no-repeat;
 `;
