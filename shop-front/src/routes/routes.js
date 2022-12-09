@@ -1,20 +1,20 @@
-import Home from "../containers/home";
-import FormAdd from "../containers/formAdd";
+import Admin from '../app/admin';
+import Home from '../app/pages/home';
+import LayoutWrap from '../app/pages/layoutWrap';
 
 export const Routes = [
   {
-    path: "/",
-    element: <Home />,
+    path: '/',
+    element: (
+      <LayoutWrap>
+        <Home />
+      </LayoutWrap>
+    ),
     exact: true,
   },
   {
-    path: "/add",
-    element: <FormAdd />,
-    exact: true,
-  },
-  {
-    path: "/edit/:id",
-    element: <FormAdd />,
+    path: '/admin/tuanquoc',
+    element: <Admin />,
     exact: true,
   },
 ];
