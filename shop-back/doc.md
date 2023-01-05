@@ -1,4 +1,4 @@
-GET https://api.pre-develop.tech/products
+> GET https://api.pre-develop.tech/products
 
 GET https://api.pre-develop.tech/products/:id
 
