@@ -11,7 +11,7 @@ POST /api.pre-develop.tech/products
 Content-Type: application/x-www-form-urlencoded
 
 {
-   "name": "address",
+   "name": "name",
    "description": "description"
    "price": 100,
    "image": null
