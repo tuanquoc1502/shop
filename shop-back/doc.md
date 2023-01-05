@@ -12,18 +12,14 @@ Access-Token: JQXYQik3AlQUR1cv4g5-EA
 Client: yeKLORmnd5Xbk7BxwwYt5g
 Content-Length: 89
 Content-Type: application/x-www-form-urlencoded
-Expiry: 1548687600
-Host: test.host
-Token-Type: Bearer
-Uid: recruiter@bunbusoft.com
-User-Agent: Rails Testing
 
 {
-  "falcility": {
-    "address": "address",
-    "memo": "memo",
-    "name": "new falcility"
-  }
+ 
+    "name": "address",
+    "description": "description"
+    "price": 100,
+    "image": "image"
+ 
 }
 ```
 
