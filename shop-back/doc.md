@@ -2,6 +2,12 @@
 
 ## GET /api.pre-develop.tech/products
 
+Response
+
+```
+
+```
+
 ## GET /api.pre-develop.tech/products/:id
 
 ## POST /api.pre-develop.tech/products
