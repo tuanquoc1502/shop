@@ -14,7 +14,7 @@ Content-Type: application/x-www-form-urlencoded
    "name": "address",
    "description": "description"
    "price": 100,
-   "image": "image"
+   "image": null
 }
 ```
 
